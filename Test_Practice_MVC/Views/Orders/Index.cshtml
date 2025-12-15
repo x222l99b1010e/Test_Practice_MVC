@@ -1,0 +1,39 @@
+﻿@using Test_Practice_MVC.Models.ViewModels
+@model OrderViewModel
+
+<h2>Orders</h2>
+
+<form method="get">
+    <select asp-for="SelectedOrderId"
+            asp-items="Model.Orders"
+            onchange="this.form.submit()">
+        <option value="">請選擇 Order</option>
+    </select>
+</form>
+
+@if (Model.SelectedOrderId.HasValue)
+{
+    <hr />
+
+    <h4>訂單資訊</h4>
+    <p>Order Date：@Model.OrderDate</p>
+    <p>Employee：@Model.EmployeeName</p>
+
+    <h4>Order Details</h4>
+    <table border="1">
+        <tr>
+            <th>ProductID</th>
+            <th>UnitPrice</th>
+            <th>Quantity</th>
+        </tr>
+
+        @foreach (var d in Model.OrderDetails)
+        {
+            <tr>
+                <td>@d.ProductID</td>
+                <td>@d.UnitPrice</td>
+                <td>@d.Quantity</td>
+            </tr>
+        }
+    </table>
+}
