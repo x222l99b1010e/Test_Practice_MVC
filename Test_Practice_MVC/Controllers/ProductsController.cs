@@ -16,18 +16,20 @@ namespace Test_Practice_MVC.Controllers
 		}
 		public IActionResult Index(string? keyword)
 		{
+			//查詢
 			var query = _context.Products.AsQueryable();
+			//將變數賦予查詢結果
 			if (!string.IsNullOrWhiteSpace(keyword))
 			{
 				query = query.Where(p => p.ProductName.Contains(keyword));
 			}
-
+			//將查詢結果丟回VM
 			var vm = new ProductsIndexViewModel
 			{
 				Products = query.ToList(),
 				Keyword = keyword
 			};
-
+			//回傳VM
 			return View(vm);
 		}
 		public IActionResult Create()
