@@ -24,7 +24,10 @@ project.lock.json
 # User-specific files
 *.log
 secrets.json
+# appsettings
+appsettings.json
 appsettings.*.json
+
 
 # Rider / ReSharper / dotCover
 _ReSharper*/

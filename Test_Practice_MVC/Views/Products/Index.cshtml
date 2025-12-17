@@ -1,0 +1,38 @@
+﻿@using Test_Practice_MVC.Models.ViewModels
+@model ProductsIndexViewModel
+
+@if (TempData["Success"] != null)
+{
+    <div style="color:green">@TempData["Success"]</div>
+}
+
+<form method="get">
+    <input type="text" name="keyword" value="@Model?.Keyword" />
+    <button type="submit">搜尋</button>
+</form>
+<a asp-action="Create" class="btn btn-primary mt-3 btn-sm">
+    新增產品
+</a>
+<table class="table">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>名稱</td>
+            <td>價格</td>
+            <td>庫存</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Products)
+        {
+            <tr>
+                <td>@item.ProductID</td>
+                <td>@item.ProductName</td>
+                <td>@item.UnitPrice</td>
+                <td>@item.UnitsInStock</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

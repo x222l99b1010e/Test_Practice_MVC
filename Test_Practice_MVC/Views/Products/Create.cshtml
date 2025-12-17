@@ -1,0 +1,24 @@
+﻿@using Test_Practice_MVC.Models.ViewModels
+@model ProductsCreateViewModel
+
+<form asp-action="Create" method="post">
+    <div>
+        <label>產品名稱</label>
+        <input asp-for="ProductName" />
+        <span asp-validation-for="ProductName"></span>
+    </div>
+
+    <div>
+        <label>價格</label>
+        <input asp-for="UnitPrice" />
+        <span asp-validation-for="UnitPrice"></span>
+    </div>
+
+    <div>
+        <label>庫存</label>
+        <input asp-for="UnitsInStock" />
+        <span asp-validation-for="UnitsInStock"></span>
+    </div>
+
+    <button type="submit">新增</button>
+</form>
